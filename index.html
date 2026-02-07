@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine 💖</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial Black, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #ff005d, #ff4d6d);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+/* Floating hearts */
+.heart {
+  position: absolute;
+  font-size: 24px;
+  animation: float 6s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
+}
+
+.container {
+  z-index: 5;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px black;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+button {
+  padding: 15px 25px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 12px;
+}
+
+#yes {
+  background: #00ff9d;
+  color: black;
+  box-shadow: 0 0 15px #00ff9d;
+}
+
+#no {
+  background: #ff0000;
+  color: white;
+  position: absolute;
+}
+
+.result {
+  display: none;
+}
+
+.result h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #00ffcc;
+}
+
+.result img {
+  width: 230px;
+  border-radius: 15px;
+}
+
+.graffiti {
+  position: absolute;
+  font-size: 18px;
+  opacity: 0.8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="proposal">
+  <h1>PREETI,<br>WILL YOU BE MY VALENTINE? 💖</h1>
+  <div class="buttons">
+    <button id="yes">YES 😍</button>
+    <button id="no">NO 😏</button>
+  </div>
+</div>
+
+<div class="container result" id="result">
+  <h2>I KNEW YOU LOVE ME 💃🔥</h2>
+  <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif">
+</div>
+
+<script>
+// floating hearts
+for (let i = 0; i < 25; i++) {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+  document.body.appendChild(heart);
+}
+
+// NO button escape
+const noBtn = document.getElementById("no");
+document.addEventListener("mousemove", moveNo);
+document.addEventListener("touchstart", moveNo);
+
+function moveNo() {
+  noBtn.style.left = Math.random() * 70 + "vw";
+  noBtn.style.top = Math.random() * 70 + "vh";
+}
+
+// YES click
+document.getElementById("yes").onclick = () => {
+  document.getElementById("proposal").style.display = "none";
+  document.getElementById("result").style.display = "block";
+
+  for (let i = 0; i < 20; i++) {
+    const g = document.createElement("div");
+    g.className = "graffiti";
+    g.innerText = "LOVE ❤️";
+    g.style.left = Math.random() * 100 + "vw";
+    g.style.top = Math.random() * 100 + "vh";
+    document.body.appendChild(g);
+  }
+};
+</script>
+
+</body>
+</html>
